@@ -3,6 +3,7 @@ use std::collections::HashMap;
 fn _sort(x: &str) -> String {
   let mut chars: Vec<char> = x.chars().collect();
   chars.sort_by(|a, b| a.cmp(b));
+
   String::from_iter(chars)
 }
 
@@ -10,17 +11,24 @@ fn _is_anagram(x: &str, y: &str) -> bool {
   if x.len() != y.len() {
     return false;
   }
-  _sort(&x).eq(&_sort(&y))
+
+  _sort(&x) == _sort(&y)
 }
 
 fn _group_anagrams(anagrams: Vec<&str>) -> Vec<Vec<String>> {
   let mut lookup: HashMap<String, Vec<String>> = HashMap::new();
+
   for word in anagrams {
     let sorted = _sort(&word);
-    if let Some(arr) = lookup.get_mut(&sorted) {
-      arr.push(String::from(word));
-    } else {
-      lookup.insert(sorted, vec![String::from(word)]);
+    let string_word = String::from(word);
+
+    match lookup.get_mut(&sorted) {
+      Some(arr) => {
+        arr.push(string_word);
+      }
+      _ => {
+        lookup.insert(sorted, vec![string_word]);
+      }
     }
   }
 
