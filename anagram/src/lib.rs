@@ -47,11 +47,10 @@ mod tests {
 
   #[test]
   fn grouping_anagrams() {
-    // Used a closure since needed to know the type but also
-    // create two seperate empty arrays
-    let empty_vec = || -> Vec<&str> { vec![] };
-    let empty_vec2 = || -> Vec<Vec<&str>> { vec![] };
-    assert_eq!(_group_anagrams(empty_vec()), empty_vec2());
+    assert_eq!(
+      _group_anagrams(vec![] as Vec<&str>),
+      vec![] as Vec<Vec<&str>>
+    );
 
     assert_eq!(
       _group_anagrams(vec!["cat", "tac"]),
