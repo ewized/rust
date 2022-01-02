@@ -64,12 +64,9 @@ mod tests {
       _group_anagrams(vec!["cat", "tac"]),
       vec![vec!["cat", "tac"]]
     );
-    // order is not ganteried in the outer Vec as we use a HashMap internally or sort it for the unit test
+    // order is not ganteried in the outer Vec as we use a HashMap internally os sort it for the unit test
     let mut grouped = _group_anagrams(vec!["cat", "tac", "bat", "tab"]);
     grouped.sort();
-    assert_eq!(
-      grouped,
-      vec![vec!["bat", "tab"], vec!["cat", "tac"]]
-    );
+    assert_eq!(grouped, vec![vec!["bat", "tab"], vec!["cat", "tac"]]);
   }
 }
