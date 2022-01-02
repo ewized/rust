@@ -82,17 +82,14 @@ impl World {
 
 impl Display for World {
   fn fmt(&self, formater: &mut Formatter<'_>) -> Result {
-    let mut world = String::new();
-
     for i in self.world {
       for j in i {
-        world.push(j);
-
+        write!(formater, "{}", j)?;
       }
-      world.push('\n');
+      writeln!(formater, "")?;
     }
 
-    write!(formater, "{}", world)
+    Ok(())
   }
 }
 
