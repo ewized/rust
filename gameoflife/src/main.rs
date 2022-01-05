@@ -58,7 +58,7 @@ fn count_neighbors<const X: usize, const Y: usize>(
 }
 
 struct World {
-  world: PlayingArea<HEIGHT, WIDTH>,
+  world: PlayingArea<WIDTH, HEIGHT>,
 }
 
 impl World {
@@ -79,7 +79,7 @@ impl World {
       } else {
         count == 3
       }
-    })
+    });
   }
 }
 
@@ -105,6 +105,7 @@ fn main() {
     print!("> ");
     stdout().flush().unwrap();
     stdin().read_line(&mut string).unwrap();
+    let string = string.to_lowercase();
     let string = string.as_str().trim();
 
     match string {
